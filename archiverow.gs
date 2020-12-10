@@ -5,7 +5,7 @@ function archive_rows(e){
   var row_data = SpreadsheetApp.getActiveSheet().getDataRange().getValues()[row_no];
   var archive_sheet=ss.getSheetByName('Tracker Archive');
   
-  if(row_data[15]=="ARCHIVE"){
+  if(row_data[15]=="ARCHIVE"){  // Column 15 trigger
       Logger.log(row_data);
       archive_sheet.appendRow(row_data);
       ss.deleteRow(row_no+1);
@@ -15,12 +15,7 @@ function archive_rows(e){
 function createOnEditTrigger(e) {
   var triggers = ScriptApp.getProjectTriggers();
   var shouldCreateTrigger = true;
-  triggers.forEach(function (trigger) {
-    
-    if(trigger.getEventType() === ScriptApp.EventType.ON_EDIT && trigger.getHandlerFunction() === "create_event") {
-      shouldCreateTrigger = false; 
-    }
-    
+  triggers.forEach(function (trigger) {  
     
       if(trigger.getEventType() === ScriptApp.EventType.ON_EDIT && trigger.getHandlerFunction() === "archive_rows") {
       shouldCreateTrigger = false; 
@@ -29,7 +24,6 @@ function createOnEditTrigger(e) {
   });
  
   if(shouldCreateTrigger){
-    ScriptApp.newTrigger("create_event").forSpreadsheet(SpreadsheetApp.getActive()).onEdit().create();
     ScriptApp.newTrigger("archive_rows").forSpreadsheet(SpreadsheetApp.getActive()).onEdit().create();
   }
 }
