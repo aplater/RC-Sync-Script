@@ -150,7 +150,7 @@ function create_event(e) {
 
 
                   
-                  /* "Interview Type" column as specified in vars in beginning will contain a dropdown (through strict data validaton). Each dropdown option will represent a template that can be designed below.
+                  /* "Interview Type" column as specified in vars in beginning will contain a dropdown (through strict data validaton). Each dropdown option will represent a template that can be designed below. */
 
                     // +++++++++++++++++++++++++++++++++ PHONE INTERVIEW TEMPLATE
 
